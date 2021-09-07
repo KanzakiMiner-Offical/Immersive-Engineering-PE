@@ -43,77 +43,19 @@ var MP_structure = [
 
 
 
-
-
-var MP_recipe_wire = [];
-
-function addMPrecipewire(result, source){
-	MP_recipe_wire.push({source: source, result: result});
-}
-
-var MP_recipe_plate = [];
-
-function addMPrecipeplate(result, source){
-	MP_recipe_plate.push({source: source, result: result});
-}
-
-var MP_recipe_rod = [];
-
-function addMPreciperod(result, source){
-	MP_recipe_rod.push({source: source, result: result});
-}
-
 Callback.addCallback("PreLoaded", function(){
-	MachineRecipeRegistry.registerRecipesFor("solidCanner", {
-		"ItemID.uranium": {storage: [ItemID.fuelRod, 1], result: [ItemID.fuelRodUranium, 1, 0]},
-		"ItemID.mox": {storage: [ItemID.fuelRod, 1], result: [ItemID.fuelRodMOX, 1, 0]},
-		354: {storage: [ItemID.tinCanEmpty, 14], result: [ItemID.tinCanFull, 14, 0]},
-		413: {storage: [ItemID.tinCanEmpty, 10], result: [ItemID.tinCanFull, 10, 0]},
-		320: {storage: [ItemID.tinCanEmpty, 8], result: [ItemID.tinCanFull, 8, 0]},
-		364: {storage: [ItemID.tinCanEmpty, 8], result: [ItemID.tinCanFull, 8, 0]},
-		400: {storage: [ItemID.tinCanEmpty, 8], result: [ItemID.tinCanFull, 8, 0]},
-		282: {storage: [ItemID.tinCanEmpty, 6], result: [ItemID.tinCanFull, 6, 0]},
-		366: {storage: [ItemID.tinCanEmpty, 6], result: [ItemID.tinCanFull, 6, 0]},
-		396: {storage: [ItemID.tinCanEmpty, 6], result: [ItemID.tinCanFull, 6, 0]},
-		424: {storage: [ItemID.tinCanEmpty, 6], result: [ItemID.tinCanFull, 6, 0]},
-		459: {storage: [ItemID.tinCanEmpty, 6], result: [ItemID.tinCanFull, 6, 0]},
-		463: {storage: [ItemID.tinCanEmpty, 6], result: [ItemID.tinCanFull, 6, 0]},
-		297: {storage: [ItemID.tinCanEmpty, 5], result: [ItemID.tinCanFull, 5, 0]},
-		350: {storage: [ItemID.tinCanEmpty, 5], result: [ItemID.tinCanFull, 5, 0]},
-		393: {storage: [ItemID.tinCanEmpty, 5], result: [ItemID.tinCanFull, 5, 0]},
-		412: {storage: [ItemID.tinCanEmpty, 5], result: [ItemID.tinCanFull, 5, 0]},
-		367: {storage: [ItemID.tinCanEmpty, 4], result: [ItemID.tinCanFull, 4, 1]},
-		260: {storage: [ItemID.tinCanEmpty, 4], result: [ItemID.tinCanFull, 4, 0]},
-		319: {storage: [ItemID.tinCanEmpty, 3], result: [ItemID.tinCanFull, 3, 0]},
-		363: {storage: [ItemID.tinCanEmpty, 3], result: [ItemID.tinCanFull, 3, 0]},
-		391: {storage: [ItemID.tinCanEmpty, 3], result: [ItemID.tinCanFull, 3, 0]},
-		411: {storage: [ItemID.tinCanEmpty, 3], result: [ItemID.tinCanFull, 3, 0]},
-		357: {storage: [ItemID.tinCanEmpty, 2], result: [ItemID.tinCanFull, 2, 0]},
-		360: {storage: [ItemID.tinCanEmpty, 2], result: [ItemID.tinCanFull, 2, 0]},
-		365: {storage: [ItemID.tinCanEmpty, 2], result: [ItemID.tinCanFull, 2, 1]},
-		375: {storage: [ItemID.tinCanEmpty, 2], result: [ItemID.tinCanFull, 2, 2]},
-		349: {storage: [ItemID.tinCanEmpty, 2], result: [ItemID.tinCanFull, 2, 0]},
-		394: {storage: [ItemID.tinCanEmpty, 2], result: [ItemID.tinCanFull, 2, 2]},
-		423: {storage: [ItemID.tinCanEmpty, 2], result: [ItemID.tinCanFull, 2, 0]},
-		460: {storage: [ItemID.tinCanEmpty, 2], result: [ItemID.tinCanFull, 2, 0]},
-		392: {storage: [ItemID.tinCanEmpty, 1], result: [ItemID.tinCanFull, 1, 0]},
-		457: {storage: [ItemID.tinCanEmpty, 1], result: [ItemID.tinCanFull, 1, 0]},
-		461: {storage: [ItemID.tinCanEmpty, 1], result: [ItemID.tinCanFull, 1, 0]},
+	MachineRecipeRegistry.registerRecipesFor("metalPress", {
+		"ItemID.ingotAluminum": {storage: [ItemID.moldRod, 1], result: [ItemID.stickAluminum, 1, 0]},
+		"ItemID.ingotSteel": {storage: [ItemID.moldRod, 1], result: [ItemID.stickSteel, 1, 0]},
+		365: {storage: [ItemID.moldRod, 14], result: [ItemID.stickIron, 14, 0]},
+		
 	}, true);
-//wire
+/*
 addMPrecipewire({id: ItemID.wireCopper, count: 1}, [{id: ItemID.ingotCopper , count: 1}]);
 addMPrecipewire({id: ItemID.wireSteel, count: 1}, [{id: ItemID.ingotSteel, count: 1}]);
 addMPrecipewire({id: ItemID.wireAluminum, count: 1}, [{id: ItemID.ingotAluminum, count: 1}]);
 addMPrecipewire({id: ItemID.wireElectrum, count: 1}, [{id: ItemID.ingotElectrum, count: 1}]);
 
-
-//stick
-addMPreciperod({id: ItemID.stickIron, count: 1}, [{id: 365 , count: 1}]);
-addMPreciperod({id: ItemID.stickSteel, count: 1}, [{id: ItemID.ingotSteel, count: 1}]);
-addMPreciperod({id: ItemID.stickAluminum, count: 1}, [{id: ItemID.ingotAluminum, count: 1}]);
-
-
-//plate
 addMPrecipeplate({id: ItemID.plateIron, count: 1}, [{id: 365 , count: 1}]);
 addMPrecipeplate({id: ItemID.plateSteel, count: 1}, [{id: ItemID.ingotSteel, count: 1}]);
 addMPrecipeplate({id: ItemID.plateAluminum, count: 1}, [{id: ItemID.ingotAluminum, count: 1}]);
@@ -123,7 +65,7 @@ addMPrecipeplate({id: ItemID.plateSilver, count: 1}, [{id: ItemID.ingotSilver, c
 addMPrecipeplate({id: ItemID.plateConstanta, count: 1}, [{id: ItemID.ingotConstanta, count: 1}]);
 addMPrecipeplate({id: ItemID.plateLead, count: 1}, [{id: ItemID.ingotLead, count: 1}]);
 addMPrecipeplate({id: ItemID.plateNickel, count: 1}, [{id: ItemID.ingotNickel , count: 1}]);
-
+*/
 });
 
 
@@ -160,7 +102,7 @@ MachineRegistry.registerPrototype(BlockID.metalPress, {
 		var canSlot = this.container.getSlot("slotCan");
 		
 		var newActive = false;
-		var recipe = MachineRecipeRegistry.getRecipeResult("solidCanner", sourceSlot.id);
+		var recipe = MachineRecipeRegistry.getRecipeResult("metalPress", sourceSlot.id);
 		if(recipe && canSlot.id == recipe.storage[0] && canSlot.count >= recipe.storage[1] && (resultSlot.id == recipe.result[0] && resultSlot.data == recipe.result[2] && resultSlot.count <= 64 - recipe.result[1] || resultSlot.id == 0)){
 			if(this.data.energy >= this.data.energy_consumption){
 				this.data.energy -= this.data.energy_consumption;
@@ -169,7 +111,6 @@ MachineRegistry.registerPrototype(BlockID.metalPress, {
 			}
 			if(this.data.progress.toFixed(3) >= 1){
 				sourceSlot.count--;
-				canSlot.count -= recipe.storage[1];
 				resultSlot.id = recipe.result[0];
 				resultSlot.data = recipe.result[2];
 				resultSlot.count += recipe.result[1];
@@ -184,19 +125,14 @@ MachineRegistry.registerPrototype(BlockID.metalPress, {
 		
 		var energyStorage = this.getEnergyStorage();
 		this.data.energy = Math.min(this.data.energy, energyStorage);
-		this.data.energy += ChargeItemRegistry.getEnergyFrom(this.container.getSlot("slotEnergy"), "Eu", energyStorage - this.data.energy, this.getTier());
+		this.data.energy += ChargeItemRegistry.getEnergyFrom(this.container.getSlot("slotEnergy"), "Rf", energyStorage - this.data.energy, this.getTier());
 		
 		this.container.setScale("progressScale", this.data.progress);
 		this.container.setScale("energyScale", this.data.energy / energyStorage);
-		
-		
-        this.container.setScale("energyScale", this.data.energy / this.data.energymax);
-        this.container.setScale("progressScale", this.data.progress);
-		this.data.energy += ChargeItemRegistry.getEnergyFrom(this.container.getSlot("slotEnergy"), Math.min(200, this.data.energymax - this.data.energy), 2);
     },
     
     getEnergyStorage: function(){
-        return this.data.energymax;
+        return this.data.energy_storage;
     },
     
     getStartSoundFile: function(){
@@ -218,4 +154,3 @@ MachineRegistry.registerPrototype(BlockID.metalPress, {
 });
 
 TileRenderer.setRotationPlaceFunction(BlockID.metalPress);
-
