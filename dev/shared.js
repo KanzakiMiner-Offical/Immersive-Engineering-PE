@@ -19,5 +19,5 @@ ModAPI.registerAPI("ImmersiveAPI", {
     }
 
 });
-Logger.Log("ImmersiveAPI shared", "API");
+Logger.Log("ImmersiveAPI shared /n Kun....", "API");
 
