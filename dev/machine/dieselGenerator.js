@@ -109,7 +109,7 @@ MachineRegistry.registerGenerator(BlockID.dieselGen, {
 	},
 	
 	energyTick: function(type, src){
-		var output = Math.min(32, this.data.energy);
+		var output = Math.min(2048, this.data.energy);
 		this.data.energy += src.add(output) - output;
 	},
 	
