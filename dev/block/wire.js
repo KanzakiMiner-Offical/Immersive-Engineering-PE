@@ -22,15 +22,23 @@ CableRegistry.createBlock("coilCopper1", {name: "tile.wireElectrum.name", textur
 ToolAPI.registerBlockMaterial(BlockID.coilElectrum0, "stone");
 ToolAPI.registerBlockMaterial(BlockID.coilElectrum1, "stone");
 
+DRegistry.genBlockID("coilSteel");
+CableRegistry.createBlock("coilSteel", {name: "tile.wireSteel.name", texture: "cable_glass"}, "cable");
+ToolAPI.registerBlockMaterial(BlockID.coilSteel, "stone");
 
-CableRegistry.registerCable("coilCopper", 2048, 1);
-CableRegistry.registerCable("coilElectrum", 8192, 1);
+// Energy Net
+CableRegistry.registerCable("coilCopper", 256, 1);
+CableRegistry.registerCable("coilElectrum", 1024, 1);
+CableRegistry.registerCable("coilSteel", 4096, 0);
 
-TileRenderer.setupWireModel(BlockID.coilElectrum0, -1, 2/16, "rf-wire");
+//Set model
+TileRenderer.setupWireModel(BlockID.coilElectrum0, -1, 2/16, "ie-wire");
 CableRegistry.setupModel(BlockID.coilElectrum1, 2/16);
-TileRenderer.setupWireModel(BlockID.coilCopper0, -1, 2/16, "rf-wire");
+TileRenderer.setupWireModel(BlockID.coilCopper0, -1, 2/16, "ie-wire");
 CableRegistry.setupModel(BlockID.coilCopper1, 2/16);
+CableRegistry.setupModel(BlockID.coilSteel, 1/8);
 
+//
 function registerCablePlaceFunc(nameID, blockID, blockData){
 	Item.registerUseFunction(nameID, function(coords, item, block){
 		var place = coords;
@@ -50,14 +58,19 @@ function registerCablePlaceFunc(nameID, blockID, blockData){
 for(var i = 0; i < 2; i++){
 	registerCablePlaceFunc("coilCopper"+i, BlockID["coilCopper"+i], 0);
 	Item.registerNameOverrideFunction(ItemID["coilCopper"+i], function(item, name){
-		return name + "\n§7" + Translation.translate("Max RF/t: ") + "2048 RF/t";
+		return name + "\n§7" + Translation.translate("Max RF/t: ") + "256 RF/t";
 	});
 }
 
 for(var i = 0; i < 2; i++){
 	registerCablePlaceFunc("coilElectrum"+i, BlockID["coilElectrum"+i], 0);
 	Item.registerNameOverrideFunction(ItemID["coilElectrum"+i], function(item, name){
-		return name + "\n§7" + Translation.translate("Max RF/t: ") + "8192 RF/t";
+		return name + "\n§7" + Translation.translate("Max RF/t: ") + "1024 RF/t";
 	});
 }
 
+
+registerCablePlaceFunc("coilSteel", BlockID.coilSteel, 0);
+Item.registerNameOverrideFunction(ItemID.coilSteel, function(item, name){
+	return name + "\n§7" + Translation.translate("Max voltage: ") + "4096 EU/t";
+});

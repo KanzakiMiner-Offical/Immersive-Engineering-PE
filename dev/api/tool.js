@@ -27,7 +27,6 @@ let ICTool = {
 		} else {
 			this.useElectricItem(item, wrench.energy * damage);
 		}
-		SoundAPI.playSound("Tools/Wrench.ogg");
 	},
 	
 	addRecipe: function(result, data, tool){

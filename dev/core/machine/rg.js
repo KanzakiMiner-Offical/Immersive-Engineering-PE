@@ -2,7 +2,11 @@
 var GUI_SCALE = 3.2;
 var GUI_ENER = 0.6;
 // API Machine
+// energy (RF)
 var RF = EnergyTypeRegistry.assureEnergyType("Rf", 0.25);
+// energy (EU)
+var EU = EnergyTypeRegistry.assureEnergyType("Eu", 1);
+
 var MachineRegistry = {
 	machineIDs: {},
 
@@ -14,6 +18,30 @@ var MachineRegistry = {
 	registerPrototype: function(id, Prototype){
 		// register ID
 		this.machineIDs[id] = true;
+		
+		// click fix
+		Prototype.onItemClick = Prototype.onItemClick || function(id, count, data, coords){
+	//		if (id == ItemID.debugItem || id == ItemID.EUMeter) return false;
+			if (this.click(id, count, data, coords)) return true;
+			if (Entity.getSneaking(player)) return false;
+			var gui = this.getGuiScreen();
+			if (gui){
+				this.container.openAs(gui);
+				return true;
+			}
+		};
+		
+		if(Prototype.wrenchClick){
+			Prototype.click = function(id, count, data, coords){
+				var item = Player.getCarriedItem();
+				if(ICTool.isValidWrench(item, 10)){
+					if(this.wrenchClick(id, count, data, coords))
+						ICTool.useWrench(item, 10);
+					return true;
+				}
+				return false;
+			};
+		}
 		
 		// audio
 		if(Prototype.getStartSoundFile){
@@ -182,6 +210,25 @@ var MachineRegistry = {
 		this.registerElectricMachine(id, Prototype);
 	},
 	
+	registerRFConnector(id, Prototype){
+
+		Prototype.isEnergySource = function(){
+			return true;
+		},
+		
+		Prototype.energyReceive = Prototype.energyReceive || this.basicEnergyReceiveFunc;
+		
+		Prototype.energyTick = Prototype.energyTick || this.basicEnergyOutFunc;
+		
+		Prototype.isTeleporterCompatible = true;
+		
+		this.registerElectricMachine(id, Prototype);
+		
+		ICRender.getGroup("ie-wire").add(id, -1);
+		ICRender.getGroup("ic-wire").add(id, -1);
+		EnergyTileRegistry.addEnergyTypeForId(id, EU);
+	},
+	
 	// standard functions
 	setStoragePlaceFunction: function(id, fullRotation){
 		Block.registerPlaceFunction(BlockID[id], function(coords, item, block){
@@ -346,10 +393,10 @@ var MachineRegistry = {
 }
 
 var transferByTier = {
-	1: 2048,
-	2: 8192,
-	3: 32768,
-	4: 131072
+	1: 256,
+	2: 1024,
+	3: 4086,
+	4: 16344
 }
 
 // BASE

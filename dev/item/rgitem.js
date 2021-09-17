@@ -65,6 +65,7 @@ IECore.registerMetal("Steel", "Steel");
  Item.createItem ("immersiveHammer", "Hammer", {name: "toolHammer", meta: 0}, {stack: 1});
  Item.createItem ("immersiveCutter", "Wire Cutter", {name: "wirecutter", meta: 0}, {stack: 1});
 
+ICTool.registerWrench(ItemID.immersiveHammer, 0.8);
 // IEwire
  IDRegistry.genItemID ("wireCopper");
  Item.createItem ("wireCopper", "Copper Wire", {name: "wireCu", meta: 0}, {stack: 64});

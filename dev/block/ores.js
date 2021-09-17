@@ -48,7 +48,7 @@ ToolAPI.registerBlockMaterial(BlockID.oreUranium, "stone", 3, true);
 Block.setDestroyLevel("oreUranium", 3);
 ToolLib.addBlockDropOnExplosion("oreUranium");
 Item.addCreativeGroup("ores", Translation.translate("Ores"), [
-    BlockID.oreAluminum,
+  BlockID.oreAluminum,
 	BlockID.oreCopper,
 	BlockID.oreNickel,
 	BlockID.oreLead,

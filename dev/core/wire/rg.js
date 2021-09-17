@@ -53,10 +53,10 @@ let WireRegister = {
 	},
 
 	setupModel: function(id, width) {
-		TileRenderer.setupWireModel(id, 0, width, "rf-wire");
+		TileRenderer.setupWireModel(id, 0, width, "ie-wire");
 		
-		var group = ICRender.getGroup("rf-wire");
-		var groupPainted = ICRender.getGroup("rf-wire-painted");
+		var group = ICRender.getGroup("ie-wire");
+		var groupPainted = ICRender.getGroup("ie-wire-painted");
 		group.add(id, -1);
 		
 		// painted cables
@@ -71,7 +71,7 @@ let WireRegister = {
 		]
 		
 		for(var data = 1; data < 16; data++){
-			var groupColor = ICRender.getGroup("rf-wire" + data);
+			var groupColor = ICRender.getGroup("ie-wire" + data);
 			groupColor.add(id, data);
 			groupPainted.add(id, data);
 			
