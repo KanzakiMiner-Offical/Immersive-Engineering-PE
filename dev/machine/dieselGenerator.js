@@ -19,7 +19,7 @@ TileRenderer.registerRotationModel(BlockID.dieselGen, 0, [["mp", 0], ["mp", 0], 
 TileRenderer.registerRotationModel(BlockID.dieselGen, 4, [["mp", 0], ["mp", 0], ["dg_STORAGE", 3], ["dg_f", 1], ["mp", 0], ["mp", 0]]);
 
 MachineRecipeRegistry.registerRecipesFor("dieselGen", {
-	"biodiesel": {power: 512, amount: 100},
+	"biodiesel": {power: 512, amount: 1},
 });
 
 var guidieselGen = new UI.StandartWindow({
@@ -105,7 +105,7 @@ MachineRegistry.registerGenerator(BlockID.dieselGen, {
 	},
 	
 	getEnergyStorage: function(){
-		return 100000;
+		return 1000000;
 	},
 	
 	energyTick: function(type, src){

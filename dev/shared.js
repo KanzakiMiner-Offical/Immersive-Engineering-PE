@@ -7,7 +7,7 @@ ModAPI.registerAPI("ImmersiveAPI", {
     RecipeLiquid: MachineRecipeLiquidRegistry,
 
     ChargeRegistry: ChargeItemRegistry,
-    Cable: CableRegistry,
+    Cable: WireRegister,
     
     Upgrade: UpgradeAPI,
     Config: Config,

@@ -65,7 +65,7 @@ var OreGenerator = {
 		minHeight: __config__.getNumber("copper_ore.minHeight"),
 		maxHeight: __config__.getNumber("copper_ore.maxHeight")
 	},
-	aluninum: {
+	aluminum: {
 		enabled: __config__.getBool("aluminum_ore.enabled"),
 		count: __config__.getNumber("aluminum_ore.count"),
 		size: __config__.getNumber("aluminum_ore.size"),

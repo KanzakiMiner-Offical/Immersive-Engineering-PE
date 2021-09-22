@@ -7,7 +7,7 @@ Block.createBlockWithRotation("connectorHV", [
     }
 ]);
 
-Block.setBlockShape(BlockID.connectorHV, { x: 1 / 16, y: 0, z: 1 / 16 }, { x: 15 / 16, y: 5 / 16, z: 15 / 16 });
+//Block.setBlockShape(BlockID.connectorHV, { x: 1 / 16, y: 0, z: 1 / 16 }, { x: 15 / 16, y: 5 / 16, z: 15 / 16 });
 
 TileRenderer.setStandartModel(BlockID.connectorHV, [["connectorHV", 0], ["connectorHV", 1], ["connectorHV", 0], ["connectorHV", 0], ["connectorHV", 0], ["connectorHV", 0]]);
 
@@ -60,7 +60,7 @@ MachineRegistry.registerRFConnector(BlockID.connectorHV, {
 			extra = new ItemExtraData();
 			extra.putInt("energy", this.data.energy);
 		}
-		World.drop(coords.x + .5, coords.y + .5, coords.z + .5, BlockID.connectorHV, 1, 0, extra);
+		World.drop(coords.x + .5, coords.y + .4, coords.z + .5, BlockID.connectorHV, 1, 0, extra);
 	},
 	
 	renderModel: function(){
@@ -71,5 +71,5 @@ MachineRegistry.registerRFConnector(BlockID.connectorHV, {
 	}
 });
 
-MachineRegistry.setStoragePlaceFunction("connectorHV", true);
+//MachineRegistry.setStoragePlaceFunction("connectorHV", true);
 ToolAPI.registerBlockMaterial(BlockID.connectorHV, "stone");

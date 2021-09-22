@@ -1,12 +1,13 @@
-IECore.registerMetal("Copper", "Copper");
-IECore.registerMetal("Nickel", "Nickel");
-IECore.registerMetal("Aluminum", "Aluminum");
-IECore.registerMetal("Silver", "Silver");
-IECore.registerMetal("Constantan", "Constantan");
-IECore.registerMetal("Lead", "Lead");
-IECore.registerMetal("Uranium", "Uranium");
-IECore.registerMetal("Electrum", "Electrum");
-IECore.registerMetal("Steel", "Steel");
+IECore.registerMetal("Copper", "Copper", true);
+IECore.registerMetal("Nickel", "Nickel", true);
+IECore.registerMetal("Aluminum", "Aluminum", true);
+IECore.registerMetal("Silver", "Silver", true);
+IECore.registerMetal("Constantan", "Constantan", true);
+IECore.registerMetal("Lead", "Lead", true);
+IECore.registerMetal("Uranium", "Uranium", false);
+IECore.registerMetal("Electrum", "Electrum", true);
+IECore.registerMetal("Steel", "Steel", true);
+IECore.registerMetal("HOPGraphite", "HOP Graphite", true);
 
  // IEplate
  IDRegistry.genItemID ("plateIron");

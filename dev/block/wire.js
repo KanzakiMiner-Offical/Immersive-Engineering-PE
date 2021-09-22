@@ -9,7 +9,7 @@ IDRegistry.genBlockID("coilCopper1");
 Block.createBlock("coilCopper0", [
 	{name: "tile.wireCopper.name", texture: [["wireCopper", 0]], inCreative: false}
 ], "cable");
-CableRegistry.createBlock("coilCopper1", {name: "tile.wireCopper.name", texture: "wireCopper1"}, "cable");
+WireRegister.createBlock("coilCopper1", {name: "tile.wireCopper.name", texture: "wireCopper1"}, "cable");
 ToolAPI.registerBlockMaterial(BlockID.coilCopper0, "stone");
 ToolAPI.registerBlockMaterial(BlockID.coilCopper1, "stone");
 
@@ -18,25 +18,25 @@ IDRegistry.genBlockID("coilElectrum1");
 Block.createBlock("coilElectrum0", [
 	{name: "tile.wireElectrum.name", texture: [["wireElectrum", 0]], inCreative: false}
 ], "cable");
-CableRegistry.createBlock("coilCopper1", {name: "tile.wireElectrum.name", texture: "wireElectrum1"}, "cable");
+WireRegister.createBlock("coilElectrum1", {name: "tile.wireElectrum.name", texture: "wireElectrum1"}, "cable");
 ToolAPI.registerBlockMaterial(BlockID.coilElectrum0, "stone");
 ToolAPI.registerBlockMaterial(BlockID.coilElectrum1, "stone");
 
-DRegistry.genBlockID("coilSteel");
-CableRegistry.createBlock("coilSteel", {name: "tile.wireSteel.name", texture: "cable_glass"}, "cable");
+IDRegistry.genBlockID("coilSteel");
+WireRegister.createBlock("coilSteel", {name: "tile.wireSteel.name", texture: "wireSteel"}, "cable");
 ToolAPI.registerBlockMaterial(BlockID.coilSteel, "stone");
 
 // Energy Net
-CableRegistry.registerCable("coilCopper", 256, 1);
-CableRegistry.registerCable("coilElectrum", 1024, 1);
-CableRegistry.registerCable("coilSteel", 4096, 0);
+WireRegister.registerCable("coilCopper", 256, 1);
+WireRegister.registerCable("coilElectrum", 1024, 1);
+WireRegister.registerCable("coilSteel", 4096, 0);
 
 //Set model
 TileRenderer.setupWireModel(BlockID.coilElectrum0, -1, 2/16, "ie-wire");
-CableRegistry.setupModel(BlockID.coilElectrum1, 2/16);
+WireRegister.setupModel(BlockID.coilElectrum1, 2/16);
 TileRenderer.setupWireModel(BlockID.coilCopper0, -1, 2/16, "ie-wire");
-CableRegistry.setupModel(BlockID.coilCopper1, 2/16);
-CableRegistry.setupModel(BlockID.coilSteel, 1/8);
+WireRegister.setupModel(BlockID.coilCopper1, 2/16);
+WireRegister.setupModel(BlockID.coilSteel, 1/8);
 
 //
 function registerCablePlaceFunc(nameID, blockID, blockData){

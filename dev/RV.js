@@ -44,5 +44,7 @@ ModAPI.addAPICallback("RecipeViewer", function(api){
 			return list;
 		}
 	});
+	
+	KilnAlloyRecipe.showRecipe(RecipeViewer);
 
 });

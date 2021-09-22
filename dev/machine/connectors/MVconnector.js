@@ -7,7 +7,7 @@ Block.createBlockWithRotation("connectorMV", [
     }
 ]);
 
-Block.setBlockShape(BlockID.connectorMV, { x: 1 / 16, y: 0, z: 1 / 16 }, { x: 15 / 16, y: 7 / 16, z: 15 / 16 });
+//Block.setBlockShape(BlockID.connectorMV, { x: 1 / 16, y: 0, z: 1 / 16 }, { x: 15 / 16, y: 7 / 16, z: 15 / 16 });
 
 TileRenderer.setStandartModel(BlockID.connectorMV, [["connectorMV", 0], ["connectorMV", 1], ["connectorMV", 0], ["connectorMV", 0], ["connectorMV", 0], ["connectorMV", 0]]);
 
@@ -71,5 +71,5 @@ MachineRegistry.registerRFConnector(BlockID.connectorMV, {
 	}
 });
 
-MachineRegistry.setStoragePlaceFunction("connectorMV", true);
+//MachineRegistry.setStoragePlaceFunction("connectorMV", true);
 ToolAPI.registerBlockMaterial(BlockID.connectorMV, "stone");
