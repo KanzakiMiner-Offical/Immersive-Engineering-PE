@@ -17,15 +17,26 @@ Callback.addCallback("PreLoaded", function(){
     addaloyIErecipe({id: ItemID.ingotBronze, count: 4}, [{id: ItemID.ingotCopper, count: 3},{id:ItemID.ingotTin, count:1}]);
     
 });
-
+*/
 // mod compatibility
-ModAPI.addAPICallback("ICore", function(api){
-});*/
+ModAPI.addAPICallback("ICore", function(api) {
+  KilnAlloyRecipe.add({
+    input: [{ id: ItemID.ingotCopper, count: 3 }, { id: ItemID.ingotTin, count: 1 }],
+    output: { id: ItemID.ingotBronze, data: 0, count: 4 },
+    time: 400
+  });
+});
 
 KilnAlloyRecipe.add({
   input: [{ id: ItemID.ingotCopper, count: 1 }, { id: ItemID.ingotNickel, count: 1 }],
   output: { id: ItemID.ingotConstantan, data: 0, count: 2 },
   time: 200
+});
+
+KilnAlloyRecipe.add({
+  input: [{ id: VanillaItemID.gold_ingot, count: 1 }, { id: ItemID.ingotSilver, count: 1 }],
+  output: { id: ItemID.ingotElectrum, data: 0, count: 2 },
+  time: 300
 });
 
 //kilnalloy
@@ -62,6 +73,10 @@ FurnaceRegistry.register(BlockID.kiln_core, {
   tick: function() {
     StorageInterface.checkHoppers(this);
 
+    if (this.data.burn > 0) {
+      this.data.burn--;
+    }
+    
     for (var i = 1; i <= 2; i++) {
       var slot = this.container.getSlot("slotSource" + i);
       // let recipe = KilnAlloyRecipe.getResult(slot.id, slot.data);
@@ -69,7 +84,7 @@ FurnaceRegistry.register(BlockID.kiln_core, {
         var Recipe = KilnAlloyRecipe.recipes[s];
         for (var z in Recipe.input) {
           var RecipeInput = Recipe.input[z];
-          if (slot.id == RecipeInput.id && slot.data == RecipeInput.data && slot.count == RecipeInput.count.count) {
+          if (slot.id == RecipeInput.id && /*slot.data == RecipeInput.data && */ slot.count == RecipeInput.count.count) {
             if (this.data.burn == 0) {
               this.data.burn = this.data.burnMax = this.getFuel("slotFuel");
             }
@@ -80,7 +95,6 @@ FurnaceRegistry.register(BlockID.kiln_core, {
               output.count = Recipe.output.count;
 
               slot.id -= RecipeInput.count;
-
               this.container.validateAll();
               this.data.progress = 0;
             }
@@ -88,6 +102,7 @@ FurnaceRegistry.register(BlockID.kiln_core, {
             this.data.progress = 0;
           }
         }
+        this.container.setScale("progressScale", this.data.progress / Recipe.time);
       }
     }
     /*var sourceItems = {};
@@ -157,7 +172,7 @@ FurnaceRegistry.register(BlockID.kiln_core, {
     }
 
     this.container.setScale("burningScale", this.data.burn / this.data.burnMax || 0);
-    this.container.setScale("progressScale", this.data.progress / 200);
+
   },
 
   getFuel: function(slotName) {
@@ -177,7 +192,7 @@ FurnaceRegistry.register(BlockID.kiln_core, {
       }
     }
     return 0;
-  },
+  }
 });
 
 //TileRenderer.setRotationPlaceFunction(BlockID.kiln_core);

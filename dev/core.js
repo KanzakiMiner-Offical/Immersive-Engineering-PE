@@ -15,12 +15,12 @@ const IECore = {
     Item.createItem(nugget, name + " Nugget", { name: nugget, meta: 0 }, { stack: 64 });
 
     IDRegistry.genItemID(dust);
-    Item.createItem(dust, name + " Dust", { name: dust, meta: 0 }, { stack: 64 });
+    Item.createItem(dust, name + " Grit", { name: dust, meta: 0 }, { stack: 64 });
 
-    if (yes = true) {
+    if (yes == true) {
       IDRegistry.genBlockID(storage);
 
-      Block.createBlock(storage, [{ name: name + "Block", texture: [[storage, 0]], inCreative: true }]);
+      Block.createBlock(storage, [{ name: name + " Block", texture: [[storage, 0]], inCreative: true }]);
 
       ToolAPI.registerBlockMaterial(BlockID[storage], "stone", 2, true);
       Block.setDestroyLevel([storage], 2);

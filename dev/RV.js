@@ -45,6 +45,8 @@ ModAPI.addAPICallback("RecipeViewer", function(api){
 		}
 	});
 	
-	KilnAlloyRecipe.showRecipe(RecipeViewer);
-
+	KilnAlloyRecipe.show(RecipeViewer);
+	CokeOvenRecipe.show(RecipeViewer);
+	BlastRecipe.show(RecipeViewer);
+	
 });

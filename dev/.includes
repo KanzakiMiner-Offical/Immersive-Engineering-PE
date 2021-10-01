@@ -5,13 +5,13 @@ libs.js
 
 core.js
 
-item.js
-
 api/.
 item/.
 core/.
 block/.
 machine/.
+generator/.
+furnace/.
 
 
 RV.js
