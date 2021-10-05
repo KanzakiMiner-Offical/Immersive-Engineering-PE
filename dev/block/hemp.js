@@ -82,6 +82,14 @@ var CropAPI = {
 }
 
 CropAPI.regSeed("hemp", "Industrial Hemp", 4)
+CropAPI.regDrop("hemp_age", 4, "hempSeed", "hempFiber");
+
+CropAPI.regGrowing("hemp_age", 0);
+CropAPI.regGrowing("hemp_age", 1);
+CropAPI.regGrowing("hemp_age", 2);
+CropAPI.regGrowing("hemp_age", 3);
+
+CropAPI.regPlant("hempSeed", "hemp_age");
 
 IDRegistry.genBlockID("hemp_tree");
 Block.createBlock("hemp_tree", [{name: "Industrial Hemp Spawn", texture: [["hempSpawn", 0]], inCreative: true}], "flower");
@@ -92,7 +100,7 @@ BlockRenderer.addRenderCallback("hemp_tree", function(api, coords, block){
 });
 BlockRenderer.enableCustomRender("hemp_tree");
 Block.registerDropFunction("hemp_tree", function (coords, id, data){
-    return [[ItemID.hempSeed, randomInt(1, 3), 0]];
+    return [[ItemID.hempSeed, randomInt(1, 2), 0]];
 });
 
 
@@ -100,7 +108,7 @@ Callback.addCallback("GenerateChunk", function (chunkX, chunkZ) {
         let coords = GenerationUtils.randomCoords(chunkX, chunkZ, 64, 128);
         coords = GenerationUtils.findSurface(coords.x, coords.y, coords.z);
         var grassTest = World.getBlockID(coords.x, coords.y, coords.z);
-        if(Math.random() <= 0.05){
+        if(Math.random()*100 <= 50){
             if(grassTest == 2){
                 World.setBlock(coords.x, coords.y+1, coords.z, BlockID.hemp_tree, 0);
             

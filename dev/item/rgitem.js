@@ -84,7 +84,7 @@ Item.createItem("drillheadSteel", "Steel Drill Head", { name: "drillheadSteel", 
 IDRegistry.genItemID("immersiveHammer");
 IDRegistry.genItemID("immersiveCutter");
 Item.createItem("immersiveHammer", "Hammer", { name: "toolHammer", meta: 0 }, { stack: 1 });
-Item.createItem("immersiveCutter", "Wire Cutter", { name: "wirecutter", meta: 0 }, { stack: 1 });
+Item.createItem("immersiveCutter", "Wire Cutter", { name: "wirecutter", meta: 0 }, { stack: 1,  });
 
 ICTool.registerWrench(ItemID.immersiveHammer, 0.8);
 // IEwire

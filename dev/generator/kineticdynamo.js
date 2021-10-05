@@ -66,13 +66,19 @@ MachineRegistry.registerGenerator(BlockID.kineticDynamo, {
     meta: 0,
     isActive: false
   },
-  /*
-  click: function(item){
-    
-  },
-  */
 
-  waterWheel: function(){
+  click: function() {
+    let item = Player.getCarriedItem();
+    if(Entity.getSneaking(Player.get())){
+    if (this.data.sails < 8 && item.id == ItemID.windSail){
+      this.data.sails += 1;
+      Player.decreaseCarriedItem();
+    }
+}
+  },
+
+
+  waterWheel: function() {
     let arr1 = [false, false, false]; // Lượng Bánh xe
     let tier = 0;
     let arr2 = [false, false, false, false]; //lượng nước(chỉ cho water wheel)
@@ -133,19 +139,19 @@ MachineRegistry.registerGenerator(BlockID.kineticDynamo, {
     }
 
   },
-  
+
   windMill: function() {
-  //  Ktra thời tiết nhá
+    //  Ktra thời tiết nhá
     var WTP = 0;
     var wtArray1 = [false, false];
     var CheckWeather = World.getWeather()
-  if(CheckWeather.rain != 0 && CheckWeather.thunder == 0){
-     wtArray1[0] = true;
-   }
-   if (CheckWeather.rain != 0 && CheckWeather.thunder != 0) {
-     wtArray1[1] = true;
-   }
-   for (let e in wtArray1) {
+    if (CheckWeather.rain != 0 && CheckWeather.thunder == 0) {
+      wtArray1[0] = true;
+    }
+    if (CheckWeather.rain != 0 && CheckWeather.thunder != 0) {
+      wtArray1[1] = true;
+    }
+    for (let e in wtArray1) {
       if (wtArray1[e]) {
         WTP++
       }
@@ -204,10 +210,10 @@ MachineRegistry.registerGenerator(BlockID.kineticDynamo, {
       }
     }
     if (World.getBlock(this.x, this.y, this.z + 1) != BlockID.windMill && this.data.sails > 0) {
-    World.drop(this.x, this.y + 0.5, this.z, ItemID.sail, this.data.sails, 0);
-    this.data.sails = 0;
+      World.drop(this.x, this.y + 0.5, this.z, ItemID.sail, this.data.sails, 0);
+      this.data.sails = 0;
     }
-    
+
     /*
     var energyStorage = this.getEnergyStorage();
     this.container.setScale("energyScale", this.data.energy / energyStorage);
